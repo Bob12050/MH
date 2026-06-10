@@ -1,0 +1,1089 @@
+:root {
+  --bg: #1d140c;
+  --panel: rgba(40, 30, 18, 0.92);
+  --panel-strong: rgba(28, 20, 12, 0.98);
+  --line: rgba(201, 161, 74, 0.28);
+  --text: #f1e7cf;
+  --muted: #b6a382;
+  --accent: #d8b15a;
+  --gold-soft: #e7c878;
+  --danger: #c2502f;
+  --good: #8a9a4a;
+  --stamina: #f1c34a;
+  --rare: #d7b0ff;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --radius: 12px;
+  --serif: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Noto Serif JP", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(201, 161, 74, 0.16), transparent 34rem),
+    radial-gradient(circle at bottom right, rgba(194, 80, 47, 0.12), transparent 30rem),
+    var(--bg);
+  color: var(--text);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, "Noto Sans JP", system-ui, sans-serif;
+  overscroll-behavior: none;
+}
+
+body[data-mode="hunt"] {
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  width: min(1180px, calc(100% - 24px));
+  margin: 0 auto;
+  padding: 18px 0 24px;
+}
+
+.app-header,
+.screen-card,
+.game-shell,
+.hunt-panel,
+.main-nav {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: 0 16px 42px var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  letter-spacing: 0.04em;
+  color: #f3e7c6;
+}
+
+h1 {
+  margin-bottom: 6px;
+  font-size: clamp(26px, 4.4vw, 46px);
+  line-height: 1.05;
+}
+
+.lead {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.version-badge {
+  flex: 0 0 auto;
+  border: 1px solid rgba(201, 161, 74, 0.4);
+  color: var(--gold-soft);
+  background: rgba(201, 161, 74, 0.12);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 800;
+  font-family: var(--serif);
+}
+
+.main-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  border-radius: 18px;
+  padding: 8px;
+  margin-bottom: 12px;
+}
+
+.main-nav button {
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.main-nav button:hover,
+.main-nav button.is-active {
+  border-color: rgba(201, 161, 74, 0.42);
+  color: #07111c;
+  background: linear-gradient(180deg, #e7c878, #b88a2e);
+}
+
+.screen-host {
+  display: block;
+}
+
+.screen-host.is-hidden,
+.hunt-view.is-hidden,
+.mobile-controls.is-hidden {
+  display: none !important;
+}
+
+.screen-card {
+  min-height: 520px;
+  border-radius: var(--radius);
+  padding: clamp(18px, 3.2vw, 30px);
+  background: var(--panel-strong);
+}
+
+.screen-card h2 {
+  margin-bottom: 8px;
+  font-size: clamp(24px, 3.7vw, 38px);
+}
+
+.screen-body {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.screen-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.screen-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 14px;
+  align-items: start;
+  margin-top: 16px;
+}
+
+.panel-box,
+.quest-card,
+.forge-card,
+.reward-card,
+.stat-card,
+.material-card,
+.guide-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.panel-box h3,
+.quest-card h3,
+.forge-card h3,
+.reward-card h3,
+.stat-card h3,
+.material-card h3,
+.guide-card h3 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 17px;
+}
+
+.card-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.card-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.home-grid,
+.quest-grid,
+.forge-grid,
+.reward-grid,
+.material-grid,
+.guide-grid,
+.equipment-summary {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.home-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.quest-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.forge-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.reward-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.material-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.guide-grid,
+.equipment-summary {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.stat-card strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--accent);
+  font-size: 26px;
+  line-height: 1;
+}
+
+.quest-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quest-card .primary-button {
+  margin-top: auto;
+}
+
+.monster-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(201, 161, 74, 0.25);
+  border-radius: 18px;
+  background: rgba(201, 161, 74, 0.09);
+  font-size: 28px;
+}
+
+.quest-head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cost-list,
+.material-list,
+.source-list,
+.menu-list {
+  display: grid;
+  gap: 7px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+
+.menu-list li {
+  border-radius: 12px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.material-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+  font-weight: 800;
+}
+
+.material-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.45em;
+  height: 1.45em;
+  border-radius: 50%;
+  background: rgba(201, 161, 74, 0.13);
+  line-height: 1;
+}
+
+.rarity-3 .material-icon {
+  background: rgba(215, 176, 255, 0.24);
+}
+
+.rarity-2 .material-icon {
+  background: rgba(231, 200, 120, 0.18);
+}
+
+.material-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 7px 9px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.material-ok {
+  color: var(--good);
+}
+
+.material-ng {
+  color: #ffb3b3;
+}
+
+.primary-button,
+.secondary-button,
+.danger-button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 18px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.primary-button {
+  color: #2a1d0a;
+  background: linear-gradient(180deg, #e7c878, #b88a2e);
+}
+
+.secondary-button {
+  color: var(--text);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.danger-button {
+  color: #fff;
+  border: 1px solid rgba(194, 80, 47, 0.45);
+  background: rgba(194, 80, 47, 0.18);
+}
+
+button:disabled,
+.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.hunt-view {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 14px;
+  align-items: start;
+}
+
+.game-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-height: calc(100svh - 178px);
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  image-rendering: auto;
+  background: #172131;
+}
+
+.hunt-panel {
+  border-radius: var(--radius);
+  padding: 18px;
+  position: sticky;
+  top: 12px;
+}
+
+.hunt-panel h2 {
+  margin-bottom: 10px;
+}
+
+.hunt-panel dl {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 6px 10px;
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+
+.hunt-panel dt {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.hunt-panel dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.hunt-section {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.tips {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.mobile-controls {
+  display: none;
+  grid-template-columns: 150px 1fr;
+  gap: 14px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.mobile-controls button {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 46px);
+  grid-template-rows: repeat(3, 46px);
+  gap: 4px;
+}
+
+.dpad button {
+  border-radius: 14px;
+  font-weight: 900;
+}
+
+.dpad [data-dir="up"] { grid-column: 2; grid-row: 1; }
+.dpad [data-dir="left"] { grid-column: 1; grid-row: 2; }
+.dpad [data-dir="down"] { grid-column: 2; grid-row: 3; }
+.dpad [data-dir="right"] { grid-column: 3; grid-row: 2; }
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.action {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.action.attack {
+  width: 82px;
+  height: 82px;
+  background: rgba(201, 161, 74, 0.18);
+}
+
+.action.roll {
+  background: rgba(255, 209, 102, 0.15);
+}
+
+.action.potion {
+  background: rgba(117, 230, 162, 0.15);
+}
+
+@media (max-width: 960px) {
+  .app {
+    width: min(100% - 16px, 800px);
+    padding-top: 10px;
+  }
+
+  .app-header {
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+
+  .lead {
+    font-size: 13px;
+  }
+
+  .screen-card {
+    min-height: 0;
+  }
+
+  .screen-layout,
+  .home-grid,
+  .quest-grid,
+  .forge-grid,
+  .reward-grid,
+  .material-grid,
+  .guide-grid,
+  .equipment-summary,
+  .hunt-view {
+    grid-template-columns: 1fr;
+  }
+
+  .game-shell {
+    max-height: none;
+  }
+
+  .hunt-panel {
+    position: static;
+  }
+
+  body[data-mode="hunt"] .mobile-controls {
+    display: grid;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-header {
+    align-items: flex-start;
+  }
+
+  .version-badge {
+    font-size: 12px;
+    padding: 6px 9px;
+  }
+
+  .main-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .screen-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .primary-button,
+  .secondary-button,
+  .danger-button {
+    width: 100%;
+  }
+
+  .mobile-controls {
+    grid-template-columns: 142px 1fr;
+  }
+
+  .dpad {
+    grid-template-columns: repeat(3, 42px);
+    grid-template-rows: repeat(3, 42px);
+  }
+
+  .actions {
+    gap: 6px;
+  }
+
+  .action {
+    width: 54px;
+    height: 54px;
+    font-size: 12px;
+  }
+
+  .action.attack {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* v0.5.2: 狩猟中は戦闘画面と操作ボタンだけに整理 */
+body[data-mode="hunt"] {
+  overflow: hidden;
+  background: #090d14;
+}
+
+body[data-mode="hunt"] .app {
+  width: min(100vw - 12px, 980px);
+  height: 100svh;
+  padding: 8px 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body[data-mode="hunt"] .app-header,
+body[data-mode="hunt"] .main-nav {
+  display: none !important;
+}
+
+body[data-mode="hunt"] .hunt-view {
+  display: block;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+body[data-mode="hunt"] .game-shell {
+  width: 100%;
+  max-height: calc(100svh - 132px);
+  margin: 0 auto;
+  border-radius: 18px;
+}
+
+body[data-mode="hunt"] .mobile-controls {
+  display: grid;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0 4px 2px;
+}
+
+.hunt-menu-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  color: var(--text);
+  background: rgba(5, 9, 15, 0.66);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.hunt-menu-button:active {
+  transform: scale(0.96);
+}
+
+.pause-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(3, 7, 12, 0.58);
+  backdrop-filter: blur(6px);
+}
+
+.pause-overlay.is-hidden {
+  display: none !important;
+}
+
+.pause-card {
+  width: min(420px, 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  padding: 18px;
+  background: rgba(16, 23, 35, 0.96);
+  box-shadow: 0 22px 58px rgba(0, 0, 0, 0.48);
+}
+
+.pause-card h2 {
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.pause-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.pause-actions button {
+  width: 100%;
+}
+
+@media (max-width: 560px) {
+  body[data-mode="hunt"] .app {
+    width: calc(100vw - 8px);
+    padding-top: 4px;
+    gap: 6px;
+  }
+
+  body[data-mode="hunt"] .game-shell {
+    max-height: calc(100svh - 128px);
+    border-radius: 14px;
+  }
+
+  .hunt-menu-button {
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+
+  .pause-card {
+    padding: 16px;
+  }
+}
+
+/* v0.5.3: 狩猟中は縦画面を全面活用する可変キャンバスに変更 */
+body[data-mode="hunt"] {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: #05080e;
+  touch-action: none;
+}
+
+body[data-mode="hunt"] .app {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+body[data-mode="hunt"] .hunt-view {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+  background: #05080e;
+}
+
+body[data-mode="hunt"] .game-shell {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(201, 161, 74, 0.08), transparent 58%),
+    #05080e;
+  box-shadow: none;
+  display: block;
+}
+
+body[data-mode="hunt"] #gameCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw !important;
+  height: 100svh !important;
+  max-width: none;
+  max-height: none;
+  aspect-ratio: auto;
+  border-radius: 0;
+  box-shadow: none;
+  background: #172131;
+}
+
+body[data-mode="hunt"] .mobile-controls {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.virtual-stick {
+  position: fixed;
+  left: max(18px, env(safe-area-inset-left));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  width: clamp(122px, 30vw, 164px);
+  height: clamp(122px, 30vw, 164px);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.stick-base {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.14), rgba(255,255,255,0.06) 42%, rgba(255,255,255,0.03) 70%);
+  box-shadow:
+    inset 0 0 22px rgba(255,255,255,0.06),
+    0 16px 32px rgba(0,0,0,0.36);
+  backdrop-filter: blur(8px);
+}
+
+.stick-base::before,
+.stick-base::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(255,255,255,0.16);
+  transform: translate(-50%, -50%);
+}
+
+.stick-base::before {
+  width: 58%;
+  height: 1px;
+}
+
+.stick-base::after {
+  width: 1px;
+  height: 58%;
+}
+
+.stick-knob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 48%;
+  height: 48%;
+  border: 1px solid rgba(201, 161, 74, 0.5);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 25%, rgba(255,255,255,0.38), transparent 28%),
+    linear-gradient(135deg, rgba(201,161,74,0.62), rgba(231,200,120,0.36));
+  box-shadow: 0 10px 24px rgba(0,0,0,0.32);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.stick-label {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(237,244,255,0.76);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.virtual-stick.is-active .stick-base {
+  border-color: rgba(201, 161, 74, 0.48);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(201,161,74,0.18), rgba(255,255,255,0.07) 44%, rgba(255,255,255,0.035) 72%);
+}
+
+body[data-mode="hunt"] .actions {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-columns: 64px 82px;
+  grid-template-rows: 58px 84px;
+  gap: 8px;
+  align-items: end;
+  justify-content: end;
+  pointer-events: auto;
+}
+
+body[data-mode="hunt"] .action {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  color: var(--text);
+  background: rgba(8, 13, 22, 0.62);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.34);
+  backdrop-filter: blur(8px);
+  font-size: 12px;
+  font-weight: 1000;
+  pointer-events: auto;
+}
+
+body[data-mode="hunt"] .action:active {
+  transform: scale(0.95);
+}
+
+body[data-mode="hunt"] .action.potion {
+  grid-column: 1;
+  grid-row: 1;
+  background: rgba(117, 230, 162, 0.20);
+}
+
+body[data-mode="hunt"] .action.roll {
+  grid-column: 2;
+  grid-row: 1;
+  background: rgba(255, 209, 102, 0.20);
+}
+
+body[data-mode="hunt"] .action.attack {
+  grid-column: 2;
+  grid-row: 2;
+  background: rgba(201, 161, 74, 0.24);
+  font-size: 14px;
+}
+
+body[data-mode="hunt"] .hunt-menu-button {
+  position: fixed;
+  top: max(10px, env(safe-area-inset-top));
+  right: max(10px, env(safe-area-inset-right));
+  z-index: 12;
+  width: 42px;
+  height: 42px;
+  background: rgba(5, 9, 15, 0.58);
+}
+
+body[data-mode="hunt"] .pause-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+}
+
+@media (orientation: landscape) {
+  body[data-mode="hunt"] #gameCanvas {
+    width: 100vw !important;
+    height: 100svh !important;
+  }
+
+  .virtual-stick {
+    width: clamp(104px, 18vw, 140px);
+    height: clamp(104px, 18vw, 140px);
+    left: max(18px, env(safe-area-inset-left));
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+
+  body[data-mode="hunt"] .actions {
+    right: max(20px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    grid-template-columns: 62px 82px;
+    grid-template-rows: 56px 82px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body[data-mode="hunt"] .mobile-controls {
+    display: none !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .virtual-stick {
+    width: 112px;
+    height: 112px;
+    left: 12px;
+    bottom: 16px;
+  }
+
+  body[data-mode="hunt"] .actions {
+    right: 12px;
+    bottom: 16px;
+    grid-template-columns: 58px 72px;
+    grid-template-rows: 52px 76px;
+    gap: 7px;
+  }
+}
+
+/* v0.7.0: gesture controls hint (replaces on-screen buttons) */
+.gesture-hint { display: none; }
+body[data-mode="hunt"] .gesture-hint {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(26px, calc(env(safe-area-inset-bottom) + 8px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  pointer-events: none;
+  text-align: right;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  z-index: 8;
+}
+body[data-mode="hunt"] .gesture-hint span {
+  font-size: 12px;
+  color: rgba(237, 228, 200, 0.72);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+body[data-mode="hunt"] .gesture-hint i {
+  font-style: normal;
+  color: var(--accent);
+  opacity: 0.85;
+  margin-right: 6px;
+  font-size: 11px;
+}
+body[data-mode="hunt"] .gesture-hint b {
+  color: #edf4ff;
+  font-weight: 800;
+  margin-left: 2px;
+}
+body[data-mode="hunt"] .actions {
+  grid-template-columns: 62px 84px;
+  grid-template-rows: 54px 58px 84px;
+  gap: 8px;
+}
+
+body[data-mode="hunt"] .action.lock {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 11px;
+  background: rgba(168, 236, 255, 0.16);
+}
+
+body[data-mode="hunt"] .action.lock.is-active {
+  border-color: rgba(168, 236, 255, 0.7);
+  background: rgba(168, 236, 255, 0.28);
+  color: #edfbff;
+}
+
+body[data-mode="hunt"] .action.potion {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+body[data-mode="hunt"] .action.roll {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+body[data-mode="hunt"] .action.attack {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+@media (orientation: landscape) {
+  body[data-mode="hunt"] .actions {
+    grid-template-columns: 60px 82px;
+    grid-template-rows: 52px 56px 78px;
+  }
+}
+
+@media (max-width: 380px) {
+  body[data-mode="hunt"] .actions {
+    grid-template-columns: 56px 72px;
+    grid-template-rows: 48px 52px 76px;
+  }
+}

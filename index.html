@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#10151f" />
+  <title>Beast Hunt Mini</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-mode="screen">
+  <main class="app">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">HTML / CSS / JavaScript Hunting Action Prototype</p>
+        <h1>Beast Hunt Mini</h1>
+        <p class="lead">狩る、素材を集める、装備を鍛える。GitHub Pagesで動く狩猟アクション試作。</p>
+      </div>
+      <div class="version-badge" id="versionBadge">v0.7.2</div>
+    </header>
+
+    <nav class="main-nav" aria-label="メインメニュー">
+      <button data-ui="menu" type="button">ホーム</button>
+      <button data-ui="quest-select" type="button">クエスト</button>
+      <button data-ui="forge" type="button">工房</button>
+      <button data-ui="inventory" type="button">素材</button>
+    </nav>
+
+    <section class="screen-host" id="screenHost" aria-live="polite">
+      <article class="screen-card">
+        <h2 id="screenTitle">読み込み中</h2>
+        <div id="screenBody" class="screen-body"></div>
+        <div id="screenActions" class="screen-actions"></div>
+      </article>
+    </section>
+
+    <section class="hunt-view is-hidden" id="huntView" aria-label="狩猟画面">
+      <div class="game-shell">
+        <canvas id="gameCanvas" width="390" height="844" aria-label="Beast Hunt Mini game canvas"></canvas>
+        <button class="hunt-menu-button" data-ui="toggle-pause" type="button" aria-label="一時停止メニューを開く">≡</button>
+        <div class="pause-overlay is-hidden" id="pauseOverlay" role="dialog" aria-modal="true" aria-label="一時停止メニュー">
+          <div class="pause-card">
+            <p class="eyebrow">PAUSE MENU</p>
+            <h2>一時停止</h2>
+            <p id="pauseQuestText" class="card-meta">クエスト中</p>
+            <div class="pause-actions">
+              <button class="primary-button" data-ui="resume" type="button">再開する</button>
+              <button class="secondary-button" data-ui="quest-select" type="button">クエスト選択へ戻る</button>
+              <button class="danger-button" data-ui="abandon" type="button">リタイアする</button>
+            </div>
+            <p class="tips">狩猟中の情報はCanvas内HUDに集約しています。メニューを閉じるとそのまま再開します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mobile-controls is-hidden" id="mobileControls" aria-label="スマホ操作ボタン">
+      <div class="virtual-stick" id="virtualStick" aria-label="移動スティック">
+        <div class="stick-base" aria-hidden="true">
+          <div class="stick-knob" id="stickKnob"></div>
+        </div>
+        <div class="stick-label" aria-hidden="true">MOVE</div>
+      </div>
+      <div class="gesture-hint" aria-hidden="true">
+        <span><i>●</i>タップ <b>攻撃</b></span>
+        <span><i>➤</i>フリック <b>回避</b></span>
+        <span><i>◉</i>長押し <b>回復</b></span>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/data/materials.js"></script>
+  <script src="js/data/weapons.js"></script>
+  <script src="js/data/armor.js"></script>
+  <script src="js/data/monsters.js"></script>
+  <script src="js/data/quests.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/systems/storage.js"></script>
+  <script src="js/systems/effects.js"></script>
+  <script src="js/entities/player.js"></script>
+  <script src="js/entities/monster.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
